@@ -1,0 +1,7 @@
+joblib
+streamlit
+cloudpickle
+pickleshare
+Markdown 
+streamlit_pandas_profiling
+pandas_profiling
