@@ -41,16 +41,19 @@ def main():
         image = Image.open('sai_app_header.png')
         im = Image.open('data_profile.png')
         st.image(im,use_column_width=None)
-        st.subheader("Data Profiling Tool")
+        st.subheader("Data Profiling and EDA Analysis")
         st.sidebar.image(image,use_column_width=None)
-        tasks = ["EDA Analysis","ML Model Building with Pycaret"]
+        tasks = ["EDA Analysis"]
         choice = st.sidebar.selectbox("Select Task To do",tasks)
         st.set_option('deprecation.showfileUploaderEncoding', False)
 
         data = st.file_uploader("Upload a Dataset (CSV or TXT)", type=["csv", "txt"])
+
         if data is not None:
             df = pd.read_csv(data)
             st.success("Your Data Frame Loaded successfully")
+            st.write(df.head())
+
             all_columns = show_columns(df)
             if choice == 'EDA Analysis':
                 if st.button("Generate Pandas Profiling Report"):
